@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UnitFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        xmlns:android="http://schemas.android.com/apk/res/android" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/rcview"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/unit_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Unit Name"
+                android:textAllCaps="false"/>
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="@dimen/itemheight"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/unit_txtview"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Please Choose Color"
+                    />
+                <TextView
+                    android:id="@+id/coloritem"
+                    android:layout_width="@dimen/itemheight"
+                    android:layout_height="@dimen/itemheight"
+                    android:background="@color/colorAccent" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/colordata"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/itemheight"
+                android:orientation="horizontal"
+                >
+                <Button
+                    android:layout_gravity="bottom"
+                    android:id="@+id/save"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="Save"/>
+                <Button
+                    android:layout_gravity="bottom"
+                    android:id="@+id/cancel"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Cancel"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
