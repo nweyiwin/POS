@@ -12,7 +12,6 @@
     <ImageButton
         android:layout_width="@dimen/itemheight"
         android:layout_height="@dimen/itemheight"
-        android:backgroundTint="@color/colorWhite"
         android:id="@+id/checkcolor"
         android:src="@drawable/ic_check"
         android:visibility="gone"

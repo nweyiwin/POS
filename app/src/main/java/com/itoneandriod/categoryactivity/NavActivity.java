@@ -19,6 +19,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.itoneandriod.categoryactivity.DAO.ColorDAO;
+import com.itoneandriod.categoryactivity.Model.ColorModel;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -26,6 +28,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+
+import java.util.Random;
 
 public class NavActivity extends AppCompatActivity {
 
@@ -40,6 +44,19 @@ public class NavActivity extends AppCompatActivity {
 
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navView = findViewById(R.id.nav_view);
+        ColorDAO colorDAO=new ColorDAO(getApplicationContext());
+        if (colorDAO.getModels().size() <= 0)
+        {
+            Random r=new Random();
+            for(int i=0; i<11; i++)
+            {
+                ColorModel temp=new ColorModel();
+                temp.ColorRed=r.nextInt(256);
+                temp.ColorGreen=r.nextInt(256);
+                temp.ColorBlue=r.nextInt(256);
+                colorDAO.saveModel(temp);
+            }
+        }
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 //        mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -53,6 +70,7 @@ public class NavActivity extends AppCompatActivity {
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
                 if(item.getItemId()==R.id.nav_category)
                 {
                     setFragment(new CategoryFragment());

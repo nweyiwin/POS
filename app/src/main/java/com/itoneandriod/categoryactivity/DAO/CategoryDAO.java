@@ -55,4 +55,20 @@ public class CategoryDAO {
         return id;
     }
 
+    public CategoryModel getModelsById(int id)
+    {
+
+        Cursor cursor=db.rawQuery("select * from "+TBName+ " where " +ColId+"=?",new String[]{String.valueOf(id)});
+        CategoryModel temp=new CategoryModel();
+        while (cursor.moveToNext())
+        {
+
+            temp.Id=cursor.getInt(cursor.getColumnIndex(ColId));
+            temp.Name=cursor.getString(cursor.getColumnIndex(ColName));
+            temp.ColorId=cursor.getInt(cursor.getColumnIndex(ColColorId));
+            temp.Disable=cursor.getInt(cursor.getColumnIndex(ColDisable));
+
+        }
+        return temp;
+    }
 }

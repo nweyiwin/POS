@@ -94,13 +94,15 @@ public class ItemFragment extends Fragment implements View.OnClickListener {
     public void clearData()
     {
         edtname.setText("");
+        edtoriginalprice.setText("");
+        edtsaleprice.setText("");
     }
 
     public void setFragment(Fragment f)
     {
         FragmentManager fm=getChildFragmentManager();
         FragmentTransaction ft=fm.beginTransaction();
-        ft.replace(R.id.mainframe,f);
+        ft.replace(R.id.displaydata,f);
         ft.commit();
     }
 
@@ -174,17 +176,18 @@ public class ItemFragment extends Fragment implements View.OnClickListener {
                 model.OPrice = Integer.parseInt(oprice);
                 model.SPrice = Integer.parseInt(sprice);
                 model.ColorId = selectcolor;
-                model.PicturePath = "";
+                model.PicturePath = ImageFragment.imageuri.toString();
                 model.Disable = 0;
 
                 itemDAO.insertModel(model);
                 loadData();
-                clearData();
+
 
                 Toast.makeText(getContext(), "Save OK", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(getContext(), "Please Fill", Toast.LENGTH_LONG).show();
             }
+            clearData();
         }
         if(btnselected.getId()==R.id.rbtusecolor)
         {

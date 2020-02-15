@@ -46,6 +46,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder>{
         final int colorcode= Color.argb(255,temp.ColorRed,temp.ColorGreen,temp.ColorBlue);
         holder.coloritem.setBackgroundColor(colorcode);
 
+        CategoryDAO categoryDAO=new CategoryDAO(context);
+        CategoryModel cattemp=categoryDAO.getModelsById(itemModels.get(position).CategoryId);
+        holder.categoryname.setText(cattemp.Name);
+
 
     }
 
